@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Check Your IP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    #ip {
+      font-weight: bold;
+      font-size: 32px;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Public IP Address is:</h1>
+  <div id="ip">Loading...</div>
+
+  <script>
+    fetch('https://api64.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('ip').textContent = data.ip;
+      })
+      .catch(() => {
+        document.getElementById('ip').textContent = "Could not retrieve IP.";
+      });
+  </script>
+</body>
+</html>
